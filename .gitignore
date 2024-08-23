@@ -1,0 +1,13 @@
+# Fichiers de base de données
+*.sqlite3
+
+# Répertoires de migration
+/bibliothecaire/migrations/
+/membre/migrations/
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# Fichiers de logs
+*.log

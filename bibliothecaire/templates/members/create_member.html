@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un nouveau membre</title>
+</head>
+<body>
+    <h1>Créer un nouveau membre</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">enregistrer</button>
+    </form>
+    <a href="{% url 'list_members' %}">Retour à la liste des membres</a>
+    <a href="{% url 'home' %}">Retour à la page d'accueil</a>
+</body>
+</html>

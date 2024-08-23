@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gérer les réservation</title>
+</head>
+<body>
+    <h1>Réservations de {{ member.name }}</h1>
+
+    <ul>
+        {% for reservation in reservations %}
+            <li>
+                Jeu: {{ reservation.jeuDePlateau.title }} - Date de réservation: {{ reservation.reservation_time }}
+
+                {% if reservation.reserved %}
+                    <p>Réservée</p>
+                {% else %}
+                    <p>Retourné</p>
+                {% endif %}
+
+                {% if reservation.reserved %}
+                    <form method="post" action="{% url 'end_reservation' reservation.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Marquer comme retourné</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Aucune réservation</li>
+        {% endfor %}
+    </ul>
+    <div>
+        <a href="{% url 'list_members' %}">Retour à la liste des membres</a>
+        <a href="{% url 'home' %}">retour à la page d'accueil</a>
+    </div>
+</body>
+</html>

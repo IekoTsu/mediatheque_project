@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Réserver un jeu de plateau</title>
+</head>
+<body>
+    <h1>Réserver un jeu de plateau</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Réserver le jeu</button>
+    </form>
+    <a href="{% url 'home' %}">Retour à la page d'accueil</a>
+</body>
+</html>

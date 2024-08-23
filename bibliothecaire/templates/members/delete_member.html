@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer un membre</title>
+</head>
+<body>
+    <h1>Etes-vous sûr de vouloir supprimer {{ member.name }}?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Oui, supprimer</button>
+    </form>
+    <a href="{% url 'list_members' %}">Annuler</a>
+</body>
+</html>

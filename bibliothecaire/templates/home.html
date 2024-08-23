@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil du bibliothécaire</title>
+</head>
+<body>
+    <h1>Bienvenue sur le portail des bibliothécaires</h1>
+    <ul>
+        <li><a href="{% url 'list_members' %}">Afficher les membres</a></li>
+        <li><a href="{% url 'list_media' %}">Afficher les médias</a></li>
+        <li><a href="{% url 'create_member' %}">Ajouter un nouveau membre</a></li>
+        <li><a href="{% url 'create_media' %}">Ajouter un nouveau média</a></li>
+        <li><a href="{% url 'create_loan' %}">Créer un emprunt</a></li>
+        <li><a href="{% url 'create_reservation' %}">Créer une réservation</a></li>
+    </ul>
+
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Déconnexion</button>
+    </form>
+    <a href="{% url 'main_home' %}">Retour à la page principale</a>
+</body>
+</html>

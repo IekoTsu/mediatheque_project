@@ -1,0 +1,146 @@
+[
+    {
+        "model": "bibliothecaire.membre",
+        "pk": 1,
+        "fields": {
+            "name": "John Doe",
+            "email": "john.doe@example.com",
+            "active_loans": 1,
+            "active_reservation": 0
+        }
+    },
+    {
+        "model": "bibliothecaire.membre",
+        "pk": 2,
+        "fields": {
+            "name": "Jane Smith",
+            "email": "jane.smith@example.com",
+            "active_loans": 0,
+            "active_reservation": 1
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 1,
+        "fields": {
+            "title": "The Great Gatsby",
+            "author": "F. Scott Fitzgerald",
+            "publication_date": "1925-04-10",
+            "available": true
+        }
+    },
+    {
+        "model": "bibliothecaire.livre",
+        "pk": 1,
+        "fields": {
+            "id": 1
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 2,
+        "fields": {
+            "title": "To Kill a Mockingbird",
+            "author": "Harper Lee",
+            "publication_date": "1960-07-11",
+            "available": true
+        }
+    },
+    {
+        "model": "bibliothecaire.livre",
+        "pk": 2,
+        "fields": {
+            "id": 2
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 3,
+        "fields": {
+            "title": "Inception",
+            "author": "Christopher Nolan",
+            "publication_date": "2010-07-16",
+            "available": true
+        }
+    },
+    {
+        "model": "bibliothecaire.dvd",
+        "pk": 1,
+        "fields": {
+            "id": 3,
+            "duration": "2:28:00"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 4,
+        "fields": {
+            "title": "The Matrix",
+            "author": "The Wachowskis",
+            "publication_date": "1999-03-31",
+            "available": true
+        }
+    },
+    {
+        "model": "bibliothecaire.dvd",
+        "pk": 2,
+        "fields": {
+            "id": 4,
+            "duration": "2:16:00"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 5,
+        "fields": {
+            "title": "Thriller",
+            "author": "Michael Jackson",
+            "publication_date": "1982-11-30",
+            "available": true
+        }
+    },
+    {
+        "model": "bibliothecaire.cd",
+        "pk": 1,
+        "fields": {
+            "id": 5,
+            "artiste": "Michael Jackson"
+        }
+    },
+    {
+        "model": "bibliothecaire.media",
+        "pk": 6,
+        "fields": {
+            "title": "Back in Black",
+            "author": "AC/DC",
+            "publication_date": "1980-07-25",
+            "available": true
+        }
+    },
+    {
+        "model": "bibliothecaire.cd",
+        "pk": 2,
+        "fields": {
+            "id": 6,
+            "artiste": "AC/DC"
+        }
+    },
+    {
+        "model": "bibliothecaire.jeudeplateau",
+        "pk": 1,
+        "fields": {
+            "title": "Catan",
+            "createur": "Klaus Teuber",
+            "available": true
+        }
+    },
+    {
+        "model": "bibliothecaire.jeudeplateau",
+        "pk": 2,
+        "fields": {
+            "title": "Carcassonne",
+            "createur": "Klaus-Jürgen Wrede",
+            "available": true
+        }
+    }
+]

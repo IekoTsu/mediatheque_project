@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gérer les emprunts</title>
+</head>
+<body>
+    <h1>Emprunts de {{ member.name }}</h1>
+    <div>
+        <a href="?sort_by=date">Trier par date</a> |
+        <a href="?sort_by=returned">Trier par statut</a>
+    </div>
+    <ul>
+        {% for emprunt in member_emprunts %}
+            <li>
+                Media: {{ emprunt.media.title }} - Date du prêt: {{ emprunt.loan_date }} - Statut: {% if emprunt.returned %} Emprunt retourné
+                                                                                                    {% else%} Emprunt non retourné
+                                                                                                    {% endif %}
+
+                {% if not emprunt.returned %}
+                    <form method="post" action="{% url 'return_loan' emprunt.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Marquer comme retourné</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Pas d'emprunts</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'list_members' %}">Retour à la liste des membres</a>
+    <a href="{% url 'home' %}">Retour à la page d'accueil</a>
+</body>
+</html>

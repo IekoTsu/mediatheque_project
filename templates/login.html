@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Se connecter</title>
+</head>
+<body>
+    <main>
+  <h2>Se connecter</h2>
+  {% if message %}
+    <p>{{ message }}</p>
+  {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="username">Nom d'utilisateur:</label>
+            <input type="text" name="username" id="username" required>
+        </div>
+        <div>
+            <label for="password">Mot de passe:</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        <button type="submit">Se connecter</button>
+    </form>
+    <a href="{% url 'main_home' %}">Retour à la page principale</a>
+    </main>
+
+</body>
+</html>

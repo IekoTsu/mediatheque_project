@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer un média</title>
+</head>
+<body>
+    <h1>Créer un média</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            {{ mediaForm.media_type.label_tag }} {{ mediaForm.media_type }}
+        </div>
+
+        <!-- Dynamically show the specific fields based on media type -->
+        <div id="dynamic_fields">
+            <!-- Fields will be inserted here -->
+        </div>
+
+        <button type="submit">Create Media</button>
+    </form>
+
+    <a href="{% url 'list_media' %}">Retour à la liste des médias</a> |
+    <a href="{% url 'home' %}">Retour à la page d'accueil</a>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mediaTypeField = document.querySelector('select[name="media_type"]');
+        const dynamicFieldsContainer = document.getElementById('dynamic_fields');
+
+        // Store HTML for different media types
+            const livreFieldsHtml = `
+                <div id="livre_fields">
+                    <div>
+                        {{ livreForm.title.label_tag }} {{ livreForm.title }}
+                    </div>
+                    <div>
+                        {{ livreForm.author.label_tag }} {{ livreForm.author }}
+                    </div>
+                    <div>
+                        {{ livreForm.publication_date.label_tag }} {{ livreForm.publication_date }}
+                    </div>
+                </div>
+            `;
+            const dvdFieldsHTML = `
+                <div id="dvd_fields">
+                    <div>
+                        {{ dvdForm.title.label_tag }} {{ dvdForm.title }}
+                    </div>
+                    <div>
+                        {{ dvdForm.author.label_tag }} {{ dvdForm.author }}
+                    </div>
+                    <div>
+                        {{ dvdForm.publication_date.label_tag }} {{ dvdForm.publication_date }}
+                    </div>
+                    <div>
+                        {{ dvdForm.duration.label_tag }} {{ dvdForm.duration }}
+                    </div>
+                </div>
+            `;
+            const cdFieldsHTML = `
+                <div id="cd_fields">
+                    <div>
+                        {{ cdForm.title.label_tag }} {{ cdForm.title }}
+                    </div>
+                    <div>
+                        {{ cdForm.author.label_tag }} {{ cdForm.author }}
+                    </div>
+                    <div>
+                        {{ cdForm.publication_date.label_tag }} {{ cdForm.publication_date }}
+                    </div>
+                    <div>
+                        {{ cdForm.artiste.label_tag }} {{ cdForm.artiste }}
+                    </div>
+                </div>
+            `;
+            const jeuDePLateauHTML = `
+                <div id='jeuDepalteau_fields'>
+                    <div>
+                        {{ jeuDePlateauForm.title.label_tag }} {{ jeuDePlateauForm.title }}
+                    </div>
+                    <div>
+                        {{ jeuDePlateauForm.createur.label_tag }} {{ jeuDePlateauForm.createur }}
+                    </div>
+                </div>
+            `
+
+        function toggleFields() {
+            const mediaType = mediaTypeField.value;
+
+            // First, remove any existing DVD or CD fields
+            const existingLivreFields = document.getElementById('livre_fields')
+            const existingDvdFields = document.getElementById('dvd_fields');
+            const existingCdFields = document.getElementById('cd_fields');
+            const existingJeuDePlateauFields = document.getElementById('jeuDepalteau_fields');
+
+            if (existingLivreFields) existingLivreFields.remove()
+            if (existingDvdFields) existingDvdFields.remove();
+            if (existingCdFields) existingCdFields.remove();
+            if (existingJeuDePlateauFields) existingJeuDePlateauFields.remove()
+
+            // Then, add the relevant fields based on the selected media type
+            if (mediaType === 'dvd') {
+                dynamicFieldsContainer.insertAdjacentHTML('beforeend', dvdFieldsHTML);
+            } else if (mediaType === 'cd') {
+                dynamicFieldsContainer.insertAdjacentHTML('beforeend', cdFieldsHTML);
+            } else if (mediaType === 'livre'){
+                dynamicFieldsContainer.insertAdjacentHTML('beforeend', livreFieldsHtml);
+            } else if (mediaType === 'jeu'){
+                dynamicFieldsContainer.insertAdjacentHTML('beforeend', jeuDePLateauHTML)
+            }
+        }
+
+    // Initialize the form with the correct fields displayed based on the initial media type
+    toggleFields();
+
+    // Add event listener to update the fields when the media type changes
+    mediaTypeField.addEventListener('change', toggleFields);
+    });
+
+</script>
+</html>
