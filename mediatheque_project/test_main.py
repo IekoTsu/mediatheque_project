@@ -1,7 +1,12 @@
 import pytest
+import os
+import django
 from django.contrib.auth.models import User, Group
 from django.urls import reverse
 from django.test import Client
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mediatheque_project.settings')
+django.setup()
 
 
 @pytest.mark.django_db

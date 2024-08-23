@@ -1,3 +1,4 @@
+from .settings import *
 # test_settings.py
 
 DATABASES = {

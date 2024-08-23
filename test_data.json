@@ -5,7 +5,7 @@
         "fields": {
             "name": "John Doe",
             "email": "john.doe@example.com",
-            "active_loans": 1,
+            "active_loans": 0,
             "active_reservation": 0
         }
     },
@@ -16,7 +16,7 @@
             "name": "Jane Smith",
             "email": "jane.smith@example.com",
             "active_loans": 0,
-            "active_reservation": 1
+            "active_reservation": 0
         }
     },
     {
